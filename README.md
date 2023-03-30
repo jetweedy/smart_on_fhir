@@ -10,4 +10,4 @@ Download this repository and save to a web server for access through a web URL. 
 
 Once your pages are on the web, enter the URL of your '...launch.html' page in the [smarthealthit launch form](https://launch.smarthealthit.org/) and click "Launch".
 
-For example, my URL is https://jetweedy.github.io/SmartOnFHIR/smartlaunch.html
+For example, my URL is https://jetweedy.github.io/smart_on_fhir/launch.html
