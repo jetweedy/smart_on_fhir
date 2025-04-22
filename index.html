@@ -63,7 +63,47 @@
                 );
 
             }).catch(console.error);
-        </script>
+
+
+
+// Function to fetch cholesterol tests for a specific patient from a FHIR server
+async function fetchCholesterolTests() {
+    const serverUrl = 'https://r3.smarthealthit.org';
+    const resourceType = 'Observation';
+    const query = `code=http://loinc.org|2093-3,http://loinc.org|2085-9,http://loinc.org|2089-1`;
+    // Construct the URL to fetch cholesterol tests for the given patient ID
+    const url = `${serverUrl}/${resourceType}?${query}`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/fhir+json',
+                'Authorization': 'Bearer your-access-token' // Include authorization if required
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data; // This data contains the Observations related to cholesterol
+    } catch (error) {
+        console.error('Error fetching cholesterol tests:', error);
+    }
+}
+// Example usage: Fetch cholesterol tests for a patient with ID '12345'
+fetchCholesterolTests().then(data => {
+    console.log('Cholesterol Tests:', data);
+});
+
+
+
+		
+	
+	
+	</script>
 
         <div id="container" style="width:100%; height:200px;"></div>
         
