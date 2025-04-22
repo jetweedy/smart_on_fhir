@@ -68,11 +68,13 @@
 
 // Function to fetch cholesterol tests for a specific patient from a FHIR server
 async function fetchCholesterolTests() {
-    const serverUrl = 'https://r3.smarthealthit.org';
-    const resourceType = 'Observation';
-    const query = `code=http://loinc.org|2093-3,http://loinc.org|2085-9,http://loinc.org|2089-1`;
+    var serverUrl = 'https://r3.smarthealthit.org';
+    var resourceType = 'Observation';
+    var query = `code=http://loinc.org|2093-3,http://loinc.org|2085-9,http://loinc.org|2089-1`;
     // Construct the URL to fetch cholesterol tests for the given patient ID
-    const url = `${serverUrl}/${resourceType}?${query}`;
+    var url = `${serverUrl}/${resourceType}?${query}`;
+    url += `&patient=fb3fd3da-5d0d-4a86-9e31-55f12edb5ec3`
+	
 
     try {
         const response = await fetch(url, {
